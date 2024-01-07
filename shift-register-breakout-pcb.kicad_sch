@@ -1504,8 +1504,8 @@
     (uuid fedef752-c65e-4b96-8cea-bb7fe0204a32)
   )
 
-  (text_box "mosfet notes\n- when we activate COL_CS, spi_start() pulls the pin LOW\n- for LATCH_CLOCK and SLOAD to do their thing, they must be HIGH\n- COL_CS triggers the mosfet, which turns on the drain? and the pullup resistor makes the line HIGH"
-    (at 27.94 144.78 0) (size 50.8 19.05)
+  (text_box "mosfet notes\n- when we activate COL_CS, spi_start() pulls COL_CS LOW\n- this causes the mosfet switch to open\n- CS_COL_MOS goes HIGH (for LATCH_CLOCK and SLOAD to do their thing, they must be HIGH)\n- spi_read()\n- COL_CS is deactivated - goes HIGH - by spi_stop() which causes COL_CS_MOS to go LOW"
+    (at 27.94 144.78 0) (size 50.8 21.59)
     (stroke (width 0) (type default))
     (fill (type none))
     (effects (font (size 1.27 1.27)) (justify left top))
