@@ -209,6 +209,252 @@
 				)
 			)
 		)
+		(symbol "Connector:Conn_01x04_Socket"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04_Socket"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x04_Socket_1_1"
+				(arc
+					(start 0 -4.572)
+					(mid -0.5058 -5.08)
+					(end 0 -5.588)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -2.032)
+					(mid -0.5058 -2.54)
+					(end 0 -3.048)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy -0.508 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy -0.508 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -0.508 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.54) (xy -0.508 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0.508)
+					(mid -0.5058 0)
+					(end 0 -0.508)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 3.048)
+					(mid -0.5058 2.54)
+					(end 0 2.032)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Connector:Conn_01x08_Socket"
 			(pin_names
 				(offset 1.016) hide)
@@ -2603,6 +2849,68 @@
 				)
 			)
 		)
+		(symbol "ct-kicad:shift-reg-qr-10mm"
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "LOGO"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "**REF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Footprint" "ct-kicad:shift-reg-qr-10mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "qr code for repo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "shift-reg-qr-10mm_0_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 		(symbol "power:+3V3"
 			(power)
 			(pin_names
@@ -3591,7 +3899,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 74.93) (xy 49.53 74.93)
+			(xy 30.48 74.93) (xy 49.53 74.93)
 		)
 		(stroke
 			(width 0)
@@ -3771,7 +4079,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 69.85) (xy 49.53 69.85)
+			(xy 30.48 69.85) (xy 49.53 69.85)
 		)
 		(stroke
 			(width 0)
@@ -4131,7 +4439,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 72.39) (xy 49.53 72.39)
+			(xy 30.48 72.39) (xy 49.53 72.39)
 		)
 		(stroke
 			(width 0)
@@ -4141,7 +4449,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 57.15) (xy 49.53 57.15)
+			(xy 30.48 57.15) (xy 49.53 57.15)
 		)
 		(stroke
 			(width 0)
@@ -4791,7 +5099,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 62.23) (xy 49.53 62.23)
+			(xy 30.48 62.23) (xy 49.53 62.23)
 		)
 		(stroke
 			(width 0)
@@ -4891,7 +5199,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 64.77) (xy 49.53 64.77)
+			(xy 30.48 64.77) (xy 49.53 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4991,7 +5299,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 59.69) (xy 49.53 59.69)
+			(xy 30.48 59.69) (xy 49.53 59.69)
 		)
 		(stroke
 			(width 0)
@@ -5181,7 +5489,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 67.31) (xy 49.53 67.31)
+			(xy 30.48 67.31) (xy 49.53 67.31)
 		)
 		(stroke
 			(width 0)
@@ -7869,6 +8177,145 @@
 		)
 	)
 	(symbol
+		(lib_id "ct-kicad:shift-reg-qr-10mm")
+		(at 55.88 26.67 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "213220bf-7cc8-4eb6-b0c2-bce07e2e92ff")
+		(property "Reference" "LOGO2"
+			(at 55.88 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "**REF"
+			(at 55.88 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "ct-kicad:shift-reg-qr-10mm"
+			(at 58.42 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "qr code for repo"
+			(at 55.88 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "shift-register-breakout-pcb"
+				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
+					(reference "LOGO2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x04_Socket")
+		(at 25.4 62.23 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "25b42343-e5b2-4d14-8034-feef741315c7")
+		(property "Reference" "J1"
+			(at 26.035 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "Conn_01x04_Socket"
+			(at 26.035 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+			(at 25.4 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 25.4 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "5c649f8e-2d5f-4507-bb19-b5243a6babf9")
+		)
+		(pin "1"
+			(uuid "8a389149-3299-4b19-8ad1-b754a212ffa0")
+		)
+		(pin "3"
+			(uuid "d73e12b7-aea6-45b3-847d-abd3132ba7ba")
+		)
+		(pin "2"
+			(uuid "456935cd-06b0-4018-b39f-6f2e163aa699")
+		)
+		(instances
+			(project "shift-register-breakout-pcb"
+				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "ct-kicad:4D03WGJ0103T5E")
 		(at 115.57 148.59 270)
 		(unit 1)
@@ -8768,7 +9215,7 @@
 		(at 256.54 90.17 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -8780,10 +9227,11 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "Conn_01x08_Socket"
-			(at 257.81 92.71 0)
+			(at 257.81 91.4399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8791,7 +9239,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B8B-EH-A_1x08_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"
 			(at 256.54 90.17 0)
 			(effects
 				(font
@@ -8951,33 +9399,34 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Conn_01x08_Socket")
-		(at 31.75 67.31 180)
+		(lib_id "Connector:Conn_01x04_Socket")
+		(at 25.4 72.39 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "758ae79f-4056-43a7-b9a4-2b0a75c42ab3")
-		(property "Reference" "J1"
-			(at 32.385 52.07 0)
+		(uuid "732f2239-630e-4df9-9210-aae573572d79")
+		(property "Reference" "J8"
+			(at 26.035 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "Conn_01x04_Socket"
+			(at 26.035 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Conn_01x08_Socket"
-			(at 32.385 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical"
-			(at 31.75 67.31 0)
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+			(at 25.4 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8986,7 +9435,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 31.75 67.31 0)
+			(at 25.4 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8994,43 +9443,31 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x08, script generated"
-			(at 31.75 67.31 0)
+		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 25.4 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "7"
-			(uuid "247a2a78-fc88-4fb2-be25-b25485dad06b")
-		)
-		(pin "1"
-			(uuid "9a82ee09-d7fb-49f7-86bb-19518aa45b3a")
-		)
-		(pin "6"
-			(uuid "9bfb2be4-f956-4fc1-9c0a-54b9c85f0741")
-		)
-		(pin "2"
-			(uuid "c009d2ca-3fde-4545-b0f0-e0cfded9b517")
-		)
-		(pin "3"
-			(uuid "9584dd35-5cac-4c74-a34f-852c675bda67")
 		)
 		(pin "4"
-			(uuid "591f3bcf-629f-4600-965d-c2db9e5a76a7")
+			(uuid "9c6cf252-9df5-427b-bb47-a899566b39a6")
 		)
-		(pin "5"
-			(uuid "bac6083a-06c0-42e3-a0ed-ccc523ac7f48")
+		(pin "1"
+			(uuid "b09058dd-b27f-427a-b47c-b25baa0b2952")
 		)
-		(pin "8"
-			(uuid "8590a54d-bbc9-4043-b4f7-26feded72119")
+		(pin "3"
+			(uuid "aa981a6c-c81e-4480-925e-288070e6da20")
+		)
+		(pin "2"
+			(uuid "dcafaa9c-9857-4083-aec3-7d5d1c3e246e")
 		)
 		(instances
 			(project "shift-register-breakout-pcb"
 				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
-					(reference "J1")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -9041,7 +9478,7 @@
 		(at 256.54 110.49 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -9053,10 +9490,11 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "Conn_01x08_Socket"
-			(at 257.81 113.03 0)
+			(at 257.81 111.7599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9064,7 +9502,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B8B-EH-A_1x08_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"
 			(at 256.54 110.49 0)
 			(effects
 				(font
@@ -9129,7 +9567,7 @@
 		(at 256.54 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -9141,10 +9579,11 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "Conn_01x08_Socket"
-			(at 257.81 43.18 0)
+			(at 257.81 41.9099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9152,7 +9591,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B8B-EH-A_1x08_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"
 			(at 256.54 40.64 0)
 			(effects
 				(font
@@ -9475,10 +9914,11 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Value" "1206W4F1002T5E"
-			(at 53.34 114.3 90)
+			(at 53.34 113.0299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10337,11 +10777,75 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:Fiducial")
+		(at 68.58 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aecc2690-56ec-43b4-9ac6-e1f0ae828ef3")
+		(property "Reference" "FID2"
+			(at 71.12 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Fiducial"
+			(at 71.12 35.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "vik:vik-logo-small"
+			(at 68.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fiducial Marker"
+			(at 68.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "shift-register-breakout-pcb"
+				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
+					(reference "FID2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x08_Socket")
 		(at 256.54 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10353,10 +10857,11 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "Conn_01x08_Socket"
-			(at 257.81 63.5 0)
+			(at 257.81 62.2299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10364,7 +10869,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_EH_B8B-EH-A_1x08_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B8B-XH-A_1x08_P2.50mm_Vertical"
 			(at 256.54 60.96 0)
 			(effects
 				(font
@@ -10493,7 +10998,7 @@
 		(at 152.4 191.77 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10629,7 +11134,7 @@
 		(at 55.88 34.29 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -11142,6 +11647,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "vik-module-connector"
