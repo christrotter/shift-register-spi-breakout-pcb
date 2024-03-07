@@ -2603,67 +2603,6 @@
 				)
 			)
 		)
-		(symbol "ct-kicad:qmk-lite-logo"
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "LOGO"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "**REF"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "ct-kicad:qmk-lite"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "the qmk logo lite"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "qmk-lite-logo_0_1"
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-		)
 		(symbol "power:+3V3"
 			(power)
 			(pin_names
@@ -7792,70 +7731,6 @@
 		)
 	)
 	(symbol
-		(lib_id "ct-kicad:qmk-lite-logo")
-		(at 55.88 26.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "04389cca-5cc2-43ee-a911-cfc89c2a6dee")
-		(property "Reference" "LOGO2"
-			(at 58.42 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "**REF"
-			(at 58.42 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ct-kicad:qmk-lite"
-			(at 55.88 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 55.88 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 55.88 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "shift-register-breakout-pcb"
-				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
-					(reference "LOGO2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 172.72 161.29 0)
 		(unit 1)
@@ -10686,25 +10561,26 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 22.86 20.32 0)
+		(at 24.13 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c1c01803-094b-4d56-8086-2842d15c4194")
-		(property "Reference" "H1"
-			(at 25.4 19.05 0)
+		(uuid "c5452827-1cde-46d0-95df-af05c4e98dcd")
+		(property "Reference" "H2"
+			(at 26.67 27.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 25.4 21.59 0)
+			(at 26.67 30.4799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10712,8 +10588,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "vik:vik-module-mounting-large"
-			(at 22.86 20.32 0)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad_Via"
+			(at 24.13 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10722,7 +10598,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 22.86 20.32 0)
+			(at 24.13 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10730,8 +10606,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 22.86 20.32 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 24.13 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10742,7 +10618,7 @@
 		(instances
 			(project "shift-register-breakout-pcb"
 				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
-					(reference "H1")
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -10807,70 +10683,6 @@
 			(project "shift-register-breakout-pcb"
 				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
 					(reference "FID1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "ct-kicad:qmk-lite-logo")
-		(at 67.31 26.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "caa4bba8-e0ab-4d2b-a984-7d2176f9098f")
-		(property "Reference" "LOGO3"
-			(at 69.85 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "**REF"
-			(at 69.85 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ct-kicad:qmk-lite"
-			(at 67.31 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 67.31 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 67.31 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "shift-register-breakout-pcb"
-				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
-					(reference "LOGO3")
 					(unit 1)
 				)
 			)
@@ -11474,6 +11286,71 @@
 			(project "shift-register-breakout-pcb"
 				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
 					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 24.13 21.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2b3f9bd-8b0f-4f36-accf-6b8a7a0750ac")
+		(property "Reference" "H1"
+			(at 26.67 20.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 26.67 22.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3mm_Pad_Via"
+			(at 24.13 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 24.13 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 24.13 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "shift-register-breakout-pcb"
+				(path "/3deab8a1-c8b9-4932-a4cb-ae1a41e6ee5f"
+					(reference "H1")
 					(unit 1)
 				)
 			)
