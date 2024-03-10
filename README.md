@@ -1,25 +1,52 @@
-# the Matrix-inator
+# Overview
 > **NOTE**: 20240309: Order placed, but awaiting final testing.
 
 A simple? breakout board that provides 32 matrix pins (_16 row and 16 column_) over SPI - using only 6 MCU pins!
 Designed for and tested in QMK - requires a custom matrix.  Expects you to be using ROW2COL diode orientation.
 
 This document includes:
-- Understanding shift registers (_kind of extensive_)
+- Understanding shift registers (_rather extensive_)
 - Matrix-inator PCB notes
 - Matrix-inator schematic detail
 - Sample code
 
-There's also a STEP file for testing fitment on your models.
+There's also a [STEP file](/matrix-inator-rev2.step) for testing fitment on your models.
 
 ![Perry...Perry the platypus?!](/images/matrix-inator-rev2.jpg)
 *-inate your keyboard matrix with the Matrix-inator!*
 
-### Connection
+# Usage
+After soldering/hooking this into your keyboard, you'll need to add the custom matrix code to your QMK keyboard.
+
+Between the [QMK docs](https://docs.qmk.fm/#/custom_matrix?id=custom-matrix) and this readme, you should have enough to get off the ground.
+
+#### Connection
 You can use the included 2x4 2.54mm pin header arrangement (_fits up to JST-XH headers_), or a [VIK-format 12-pin@0.5mm pitch FPC cable](https://github.com/sadekbaroudi/vik)
 - _Power_: GND, 3.3V
 - _Any GPIO_: Row CS, Col CS, Latch
 - _SPI_: Clock/MISO/MOSI from the same SPI bus
+- _rows and cols_: 2.54mm headers, do what you want here.
+
+#### PCBA (PCB assembly)
+If you want to order this, the gerbers are included in the latest [Github release](https://github.com/christrotter/shift-register-spi-breakout-pcb/releases/latest).
+
+I seem to recall there being a silly part showing up that shouldn't have been (like a logo or something), but everything important came through.
+
+Headers not part of the BOM, only the complicated and fiddly stuff.
+
+#### Additonal parts you'll need
+See the latest [Github release](https://github.com/christrotter/shift-register-spi-breakout-pcb/releases/latest) if you need all the parts.
+- (_optional_) some flavour of 2.54mm-spaced headers
+- 12-pin @ 0.5mm pitch FPC cable of sufficient length and a keyboard with a VIK port
+  - (_or_) 2x 4-pin 2.54mm headers
+- M3 hardware or some way of mounting the pcb to your model
+
+#### Latch header notes
+There's a 3-pin header labeled **Enable Latch**.
+
+> *It will need to have pins 2 & 3 connected for the latch to work.* 
+
+This is a development leftover.  Future revisions will not have it.
 
 # Understanding shift registers
 In order to understand shift registers, it's very important to understand how QMK's matrix scanning works.  And, of course, to understand that, you need to read their docs:
@@ -32,11 +59,11 @@ This doc is my simplification of the topic.
 > **NOTE**: for the sake of illustration, you can use the idea that HIGH = "pin has voltage" and LOW = "pin is grounded". 
 
 ## Matrix scanning, tl;dr: 
-1. start matrix scan
-2. loop over each row pin.  on each loop, set this row pin HIGH (_all others LOW_) and then check **ALL** col pins for a reciprocal HIGH.
-3. build a `new_matrix_maybe` object with the result of each row iteration
-4. compare `live_matrix` with `new_matrix_maybe` - if differences, replace `live_matrix` with `new_matrix_maybe`
-5. end matrix scan loop
+1. Start matrix scan
+2. Loop over each row pin.  on each loop, set this row pin HIGH (_all others LOW_) and then check **ALL** col pins for a reciprocal HIGH.
+3. Build a `new_matrix_maybe` object with the result of each row iteration
+4. Compare `live_matrix` with `new_matrix_maybe` - if differences, replace `live_matrix` with `new_matrix_maybe`
+5. End matrix scan loop
 (_and now QMK does everything else_)
 
 ![Matrix basic](/images/qmk-matrix-sketch.jpg)
@@ -73,8 +100,8 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.
 
 There are two types of registers being used here:
-- 74HC589: get the HIGH/LOW state of the data pins and return via SPI
-- 74HC595: set the data pins to a HIGH/LOW state as per instructions sent via SPI
+- 74HC589: get the HIGH/LOW state of the data pins and return via SPI ([74HC589 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc589a-d.pdf))
+- 74HC595: set the data pins to a HIGH/LOW state as per instructions sent via SPI ([74HC595 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc595a-d.pdf))
 
 One accepts data from our code (595), the other provides data for our code (589).
 
@@ -92,7 +119,7 @@ So you need to understand a tiny bit about the 589 shift registers.
 
 ![Logic of 589](/images/74HC589-logic-diagram.jpg)
 
-Simply put - the "data" we need is stored in the 'data latch'.  To retrieve it via SPI, we need to tell the register to transfer it from the 'data latch' into the 'shift register', which has a small amount of memory for serial operations.  Once in the next 'serial transfer' part of the clock cycling, the data in the shift register will be pulled out over SPI.
+Simply put - the data we need is stored in the `data latch`.  To retrieve it via SPI, we need to tell the register to transfer it from the `data latch` into the `shift register`, which has a small amount of memory for serial operations.  Once in the next 'serial transfer' part of the clock cycling, the data in the `shift register` will be pulled out over SPI.
 
 ### Deep magicks
 Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (HIGH/LOW) by polling your shift registers with sets/gets (_layman's terms_).
@@ -121,11 +148,7 @@ The matrix code, Kicad files, and part datasheets provide the rest of the puzzle
 A very important feature of the design are the 10k resistor arrays/networks that pull down the col pins to ground.  If you fail to implement this you will get super random/repeating responses.  How do I know this?
 
 ### it's complicated
-The order of operations is determined by the timing diagram.
-
-That sentence makes me sound like an elite who knows more than you.
-
-_lies.  deception._
+The order of operations is determined by the timing diagram.  That sentence makes me sound like an elite who knows more than you.  _lies.  deception._
 
 ![Timing of 589](/images/74HC589-timing-diagram.jpg)
 
@@ -133,6 +156,13 @@ _lies.  deception._
 ![PCB overview](/images/pcb-overview.jpg)
 ![3D render - front](/images/pcb-3d-front.jpg)
 ![3D render - back](/images/pcb-3d-back.jpg)
+
+## For the DIY-er
+If you want to incorporate shift registers into your PCB, highly advise you do the following...
+- Read the datasheets, carefully, twice, then thrice.
+- Remember that pcb manufacturers have tolerances.  Abide by them and err on the generous side.
+- The pull-down effect of the 10k resistor network is non-negotiable.  Floating signal is a guarantee, not a maybe.  Floating signal means your board does not work.
+- Remember that decoupling caps need to be as close as possible to their device, and the current should flow through the cap trace into the device.
 
 ## Performance
 It's worth noting that if you use the full 16 rows you will not have a very performant keyboard - scan rate drops to **1100**.  Still usable as a keyboard, but you won't have a ton of CPU overhead for other features.
