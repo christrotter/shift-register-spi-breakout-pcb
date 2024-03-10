@@ -5,9 +5,12 @@ A simple? breakout board that provides 32 matrix pins (_16 row and 16 column_) o
 Designed for and tested in QMK - requires a custom matrix.  Expects you to be using ROW2COL diode orientation.
 
 This document includes:
-- Understanding shift registers
-- Matrix-inator notes
+- Understanding shift registers (_kind of extensive_)
+- Matrix-inator PCB notes
+- Matrix-inator schematic detail
 - Sample code
+
+There's also a STEP file for testing fitment on your models.
 
 ![Perry...Perry the platypus?!](/images/matrix-inator-rev2.jpg)
 *-inate your keyboard matrix with the Matrix-inator!*
