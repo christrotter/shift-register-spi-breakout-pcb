@@ -10,7 +10,7 @@ This document includes:
 - Matrix-inator schematic detail
 - Sample code
 
-There's also a STEP file for testing fitment on your models.
+There's also a [STEP file](/matrix-inator-rev2.step) for testing fitment on your models.
 
 ![Perry...Perry the platypus?!](/images/matrix-inator-rev2.jpg)
 *-inate your keyboard matrix with the Matrix-inator!*
