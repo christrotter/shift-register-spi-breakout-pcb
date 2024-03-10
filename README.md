@@ -100,14 +100,16 @@ Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - 
 ![Shift register magic](/images/qmk-set-row-high.jpg)
 
 ### for each row pin
-1. Set `row_cs` HIGH; the rows register is now the active SPI device
+> **NOTE**: CS pins on registers are normally HIGH.  You set them LOW to activate them.
+
+1. Set `row_cs` LOW; the rows register is now the active SPI device
 2. Send the data packet telling the register which pin to set HIGH (`spi_transmit`)
-3. Set `row_cs` LOW; we are done with the rows register, so de-select it
+3. Set `row_cs` HIGH; we are done with the rows register, so de-select it
 4. Set the `latch` HIGH; the 589 register transfers current pin data from latch to register
 5. Set the `latch` LOW; register cannot do data transfer while latch is HIGH
-6. Set the `col_cs` HIGH - the register will start transferring data over SPI
+6. Set the `col_cs` LOW - the register will start transferring data over SPI
 7. Get the data packet that will tell us which col pin is HIGH (`spi_receive`)
-8. Set the `col_cs` LOW - we are done with the cols register, so de-select it
+8. Set the `col_cs` HIGH - we are done with the cols register, so de-select it
 
 ![Shift register flow](/images/qmk-register-flow.jpg)
 
