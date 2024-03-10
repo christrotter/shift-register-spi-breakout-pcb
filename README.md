@@ -16,6 +16,9 @@ There's also a STEP file for testing fitment on your models.
 *-inate your keyboard matrix with the Matrix-inator!*
 
 # Usage
+After soldering/hooking this into your keyboard, you'll need to add the custom matrix code to your QMK keyboard.
+
+Between the [QMK docs](https://docs.qmk.fm/#/custom_matrix?id=custom-matrix) and this readme, you should have enough to get off the ground.
 
 #### Connection
 You can use the included 2x4 2.54mm pin header arrangement (_fits up to JST-XH headers_), or a [VIK-format 12-pin@0.5mm pitch FPC cable](https://github.com/sadekbaroudi/vik)
@@ -39,7 +42,11 @@ See the latest [Github release](https://github.com/christrotter/shift-register-s
 - M3 hardware or some way of mounting the pcb to your model
 
 #### Latch header notes
-There's a 3-pin header labeled **Enable Latch**.  *It will need to have pins 2 & 3 connected for the latch to work.*  This is a development leftover.  Future revisions will not have it.
+There's a 3-pin header labeled **Enable Latch**.
+
+> *It will need to have pins 2 & 3 connected for the latch to work.* 
+
+This is a development leftover.  Future revisions will not have it.
 
 # Understanding shift registers
 In order to understand shift registers, it's very important to understand how QMK's matrix scanning works.  And, of course, to understand that, you need to read their docs:
