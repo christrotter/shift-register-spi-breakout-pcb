@@ -99,14 +99,17 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 ## Shift register magic explained
 > Obviously shift registers are not magic and are completely understandable - I use the word 'magic' as an entertaining literary device.  Covering all of the detail is just too much scope for this doc.  If I can understand it, you can, too!
 
-The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.  They intake (or output) 8 bits of data in parallel, and then ship them out serially.
-Remember that there are no perfect solutions, and you're always making tradeoffs.  Recall we have a GPIO constraint...the shift registers get us more "GPIO" at the cost of complication.  That complication comes in the form of a parallel->serial->parallel flow.
-
 There are two types of registers being used here:
 - 74HC589: get the HIGH/LOW state of the data pins and return via SPI ([74HC589 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc589a-d.pdf))
 - 74HC595: set the data pins to a HIGH/LOW state as per instructions sent via SPI ([74HC595 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc595a-d.pdf))
 
-One accepts data from our code (595), the other provides data for our code (589).
+The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.  
+- The 589 reads 8 bits of data from the data pins in parallel, and then ships them out serially.
+- The 595 takes 8 bits of data serially and applies it to the data pins in parallel.
+
+Said another way, one accepts data from our code (595), the other provides data for our code (589).
+
+Remember that there are no perfect solutions, and you're always making tradeoffs.  Recall we have a GPIO constraint...the shift registers get us more "GPIO" at the cost of complication.  That complication comes in the form of a parallel->serial->parallel flow.
 
 - "Hay, row_shift_register, set a row pin to HIGH, please"
 - "Okay, while that row is HIGH; col_shift_register, check all your pins - any HIGH?"
@@ -124,6 +127,8 @@ So you need to understand a tiny bit about the 589 shift registers.
 
 Simply put - the data we need is stored in the `data latch`.  To retrieve it via SPI, we need to tell the register to transfer it from the `data latch` into the `shift register`, which has a small amount of memory for serial operations.  Once in the next 'serial transfer' part of the clock cycling, the data in the `shift register` will be pulled out over SPI.
 
+> Remember, the 595 works on effectively the same principles, just the reverse flow.
+
 ### Deep magicks
 Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (HIGH/LOW) by polling your shift registers with sets/gets (_layman's terms_).
 
@@ -131,6 +136,8 @@ Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - 
 
 ### for each row pin
 > **NOTE**: CS pins on registers are normally HIGH.  You set them LOW to activate them.
+
+> **NOTE**: The flow graphics illustrate how a 589 register works.  A 595 is exactly the same picture, just mirrored.
 
 1. Set `row_cs` LOW; the rows register is now the active SPI device
 2. Send the data packet telling the register which pin to set HIGH (`spi_transmit`)
@@ -143,7 +150,7 @@ Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - 
 
 ![Shift register flow](/images/qmk-register-flow.jpg)
 
-And now consider the data flow mentioned above...
+And now consider the 589 data flow mentioned above...
 
 ![Register data basic](/images/qmk-col-to-code.jpg)
 
