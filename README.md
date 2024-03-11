@@ -175,6 +175,22 @@ It's worth noting that if you use the full 16 rows you will not have a very perf
 - Normal 2.54mm pin headers also work fine
 - Two-layer board; ground pour on both sides tied together with vias
 
+## VIK module certification
+
+| Category                | Classification          | Response           |
+| ----------------------- | ----------------------- | ------------------ |
+| FPC connector           | Required                | :heavy_check_mark: |
+| Breakout pins           | Recommended             | :heavy_check_mark: |
+| Uses: SPI               | Optional                | :heavy_check_mark: |
+| SPI used for SPI only   | Strongly recommended    | :heavy_check_mark: |
+| Uses: I2C               | Optional                | :x:                |
+| I2C used for I2C only   | Strongly Recommended    | :x:                |
+| I2C pull ups            | Required                | N/A                |
+| Uses: RGB               | Optional                | :x:                |
+| Uses: Extra GPIO 1      | Optional                | :heavy_check_mark: |
+| Uses: Extra GPIO 2      | Optional                | :heavy_check_mark: |
+| Standard PCB Size/Mount | Strongly recommended    | :x:                |
+
 ## Pins
 - ROW_CS - trigger to enable sending bits to the Row 74HC595 shift registers
 - COL_CS - trigger enable reading bits from the Col 74HC589 shift registers
