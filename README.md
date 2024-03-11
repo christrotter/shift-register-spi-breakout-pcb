@@ -97,7 +97,10 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 ```
 
 ## Shift register magic explained
-The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.
+> Obviously shift registers are not magic and are completely understandable - I use the word 'magic' as an entertaining literary device.  Covering all of the detail is just too much scope for this doc.  If I can understand it, you can, too!
+
+The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.  They intake (or output) 8 bits of data in parallel, and then ship them out serially.
+Remember that there are no perfect solutions, and you're always making tradeoffs.  Recall we have a GPIO constraint...the shift registers get us more "GPIO" at the cost of complication.  That complication comes in the form of a parallel->serial->parallel flow.
 
 There are two types of registers being used here:
 - 74HC589: get the HIGH/LOW state of the data pins and return via SPI ([74HC589 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc589a-d.pdf))
@@ -139,6 +142,10 @@ Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - 
 8. Set the `col_cs` HIGH - we are done with the cols register, so de-select it
 
 ![Shift register flow](/images/qmk-register-flow.jpg)
+
+And now consider the data flow mentioned above...
+
+![Register data basic](/images/qmk-col-to-code.jpg)
 
 ## even more depth
 ...is something I won't get into.  Suffice to say that the registers function with a lot of clock timing and conditions available based on what is HIGH and what is LOW.
