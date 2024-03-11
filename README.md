@@ -30,7 +30,7 @@ You can use the included 2x4 2.54mm pin header arrangement (_fits up to JST-XH h
 #### PCBA (PCB assembly)
 If you want to order this, the gerbers are included in the latest [Github release](https://github.com/christrotter/shift-register-spi-breakout-pcb/releases/latest).
 
-I seem to recall there being a silly part showing up that shouldn't have been (like a logo or something), but everything important came through.
+I seem to recall there being a silly part showing up that shouldn't have been (_like a logo or something_), but everything important came through.
 
 Headers not part of the BOM, only the complicated and fiddly stuff.
 
@@ -78,7 +78,7 @@ I have been working on integrating the Cyboard flex-pcb system into my latest bu
 If you're used to COL2ROW, it's, for all intents and purposes, identical, just flip rows & cols around.
 
 ## Pseudo matrix scan code
-This is (mostly) not real code.
+This is (_mostly_) not real code.
 ```c
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     static matrix_row_t temp_matrix[ROWS_COUNT] = {0};
@@ -107,13 +107,13 @@ The shift registers each have 8 "data" pins and a bunch of SPI/functionality pin
 - The 589 reads 8 bits of data from the data pins in parallel, and then ships them out serially.
 - The 595 takes 8 bits of data serially and applies it to the data pins in parallel.
 
-Said another way, one accepts data from our code (595), the other provides data for our code (589).
+Said another way, one accepts data from our code (_595_), the other provides data for our code (_589_).
 
 Remember that there are no perfect solutions, and you're always making tradeoffs.  Recall we have a GPIO constraint...the shift registers get us more "GPIO" at the cost of complication.  That complication comes in the form of a parallel->serial->parallel flow.
 
 - "Hay, row_shift_register, set a row pin to HIGH, please"
 - "Okay, while that row is HIGH; col_shift_register, check all your pins - any HIGH?"
-(repeat for every row pin)
+(_repeat for every row pin_)
 
 Consider the matrix sketch above...instead of using GPIOs to send the signals to rows/cols, we use magical shift registers.
 
@@ -130,7 +130,7 @@ Simply put - the data we need is stored in the `data latch`.  To retrieve it via
 > Remember, the 595 works on effectively the same principles, just the reverse flow.
 
 ### Deep magicks
-Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (HIGH/LOW) by polling your shift registers with sets/gets (_layman's terms_).
+Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (_HIGH/LOW_) by polling your shift registers with sets/gets (_layman's terms_).
 
 ![Shift register magic](/images/qmk-set-row-high.jpg)
 
