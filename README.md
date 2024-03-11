@@ -30,7 +30,7 @@ You can use the included 2x4 2.54mm pin header arrangement (_fits up to JST-XH h
 #### PCBA (PCB assembly)
 If you want to order this, the gerbers are included in the latest [Github release](https://github.com/christrotter/shift-register-spi-breakout-pcb/releases/latest).
 
-I seem to recall there being a silly part showing up that shouldn't have been (like a logo or something), but everything important came through.
+I seem to recall there being a silly part showing up that shouldn't have been (_like a logo or something_), but everything important came through.
 
 Headers not part of the BOM, only the complicated and fiddly stuff.
 
@@ -78,7 +78,7 @@ I have been working on integrating the Cyboard flex-pcb system into my latest bu
 If you're used to COL2ROW, it's, for all intents and purposes, identical, just flip rows & cols around.
 
 ## Pseudo matrix scan code
-This is (mostly) not real code.
+This is (_mostly_) not real code.
 ```c
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     static matrix_row_t temp_matrix[ROWS_COUNT] = {0};
@@ -97,17 +97,23 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 ```
 
 ## Shift register magic explained
-The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.
+> Obviously shift registers are not magic and are completely understandable - I use the word 'magic' as an entertaining literary device.  Covering all of the detail is just too much scope for this doc.  If I can understand it, you can, too!
 
 There are two types of registers being used here:
 - 74HC589: get the HIGH/LOW state of the data pins and return via SPI ([74HC589 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc589a-d.pdf))
 - 74HC595: set the data pins to a HIGH/LOW state as per instructions sent via SPI ([74HC595 datasheet](https://www.onsemi.com/pdf/datasheet/mc74hc595a-d.pdf))
 
-One accepts data from our code (595), the other provides data for our code (589).
+The shift registers each have 8 "data" pins and a bunch of SPI/functionality pins.  
+- The 589 reads 8 bits of data from the data pins in parallel, and then ships them out serially.
+- The 595 takes 8 bits of data serially and applies it to the data pins in parallel.
+
+Said another way, one accepts data from our code (_595_), the other provides data for our code (_589_).
+
+Remember that there are no perfect solutions, and you're always making tradeoffs.  Recall we have a GPIO constraint...the shift registers get us more "GPIO" at the cost of complication.  That complication comes in the form of a parallel->serial->parallel flow.
 
 - "Hay, row_shift_register, set a row pin to HIGH, please"
 - "Okay, while that row is HIGH; col_shift_register, check all your pins - any HIGH?"
-(repeat for every row pin)
+(_repeat for every row pin_)
 
 Consider the matrix sketch above...instead of using GPIOs to send the signals to rows/cols, we use magical shift registers.
 
@@ -121,13 +127,17 @@ So you need to understand a tiny bit about the 589 shift registers.
 
 Simply put - the data we need is stored in the `data latch`.  To retrieve it via SPI, we need to tell the register to transfer it from the `data latch` into the `shift register`, which has a small amount of memory for serial operations.  Once in the next 'serial transfer' part of the clock cycling, the data in the `shift register` will be pulled out over SPI.
 
+> Remember, the 595 works on effectively the same principles, just the reverse flow.
+
 ### Deep magicks
-Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (HIGH/LOW) by polling your shift registers with sets/gets (_layman's terms_).
+Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - so you can understand what is going on in your digital matrix (_HIGH/LOW_) by polling your shift registers with sets/gets (_layman's terms_).
 
 ![Shift register magic](/images/qmk-set-row-high.jpg)
 
 ### for each row pin
 > **NOTE**: CS pins on registers are normally HIGH.  You set them LOW to activate them.
+
+> **NOTE**: The flow graphics illustrate how a 589 register works.  A 595 is exactly the same picture, just mirrored.
 
 1. Set `row_cs` LOW; the rows register is now the active SPI device
 2. Send the data packet telling the register which pin to set HIGH (`spi_transmit`)
@@ -139,6 +149,10 @@ Each shift register has 8 bits (_1 byte_) - the data pins are digital, 0 or 1 - 
 8. Set the `col_cs` HIGH - we are done with the cols register, so de-select it
 
 ![Shift register flow](/images/qmk-register-flow.jpg)
+
+And now consider the 589 data flow mentioned above...
+
+![Register data basic](/images/qmk-col-to-code.jpg)
 
 ## even more depth
 ...is something I won't get into.  Suffice to say that the registers function with a lot of clock timing and conditions available based on what is HIGH and what is LOW.
