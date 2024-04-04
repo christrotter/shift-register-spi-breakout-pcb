@@ -1,5 +1,5 @@
 # Overview
-> **NOTE**: 20240309: Order placed, but awaiting final testing.
+Tested and working as of 20240403! \o/
 
 A simple? breakout board that provides 32 matrix pins (_16 row and 16 column_) over SPI - using only 6 MCU pins!
 Designed for and tested in QMK - requires a custom matrix.  Expects you to be using ROW2COL diode orientation.
@@ -14,6 +14,13 @@ There's also a [STEP file](/matrix-inator-rev2.step) for testing fitment on your
 
 ![Perry...Perry the platypus?!](/images/matrix-inator-rev2.jpg)
 *-inate your keyboard matrix with the Matrix-inator!*
+
+# Implementation notes
+- The code examples are QMK-centric and utilize Chibios bits and bobs
+- The latch header is redundant - **should always be connected ("enable latch")**.  If there's a future rev I will remove it.
+
+# Why not 74HC165 shift registers?
+There are 74HC589 supply issues, why not use the 74HC165 shift register?  Because *the 165 cannot share the SPI bus*, and QMK only allows you - at present - to utilize a single SPI bus.  You could use the 165 if you also included a tri-state buffer (e.g. 74HC1G125-Q100).  The 589 has that built-in.
 
 # Usage
 After soldering/hooking this into your keyboard, you'll need to add the custom matrix code to your QMK keyboard.
@@ -335,6 +342,21 @@ static inline void write_to_rows(uint16_t value) {
     spi_start(SPI_MATRIX_CHIP_SELECT_PIN_ROWS, true, SPI_MODE, SPI_MATRIX_DIVISOR);
     spi_transmit(message, 2);
     spi_stop();
+}
+
+// /**
+//  * @brief Helper function to wait until a pin  has reached the wanted target
+//  * state. This only works for Push-Pull pins with enabled input stage.
+//  */
+static void __time_critical_func(write_and_wait_for_pin)(pin_t pin, uint8_t target_state) {
+    writePin(pin, target_state);
+    rtcnt_t start = chSysGetRealtimeCounterX();
+    rtcnt_t end   = start + MS2RTC(REALTIME_COUNTER_CLOCK, 20);
+    while (chSysIsCounterWithinX(chSysGetRealtimeCounterX(), start, end)) {
+        if (readPin(pin) == target_state) {
+            return;
+        }
+    }
 }
 
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
